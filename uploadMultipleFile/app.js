@@ -5,6 +5,7 @@ const path = require("path")
 const util = require('util');
 const app = express()
 const port = 3000
+const writeFile = util.promisify(fs.writeFile);
 
 app.use(express.static('.'))
 app.use(express.json({
@@ -14,25 +15,20 @@ app.use(fileUpload({
   limit: 50 * 1024 * 1024
 }));
 
-app.post("/uploadFormFile", (req, res) => {
-  let sampleFile;
-  let uploadPath;
-
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
+app.post("/uploadMultipleBase64File", async (req, res) => {
+  const files = req.body;
+  let result = {msg: "success"}
+  for (let file of files) {
+    const {base64String, fileName, fileType} = file
+    const originalFile = base64String.replace(/^data:image\/\w+;base64,/, "");
+    // add Promise judge success
+    response = await writeFile(`${__dirname}/files/${fileName}`, originalFile, { encoding: 'base64'})
+    if (response) {
+      result = {msg: "failed"}
+    }
   }
 
-  sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/files/' + sampleFile.name;
-
-  sampleFile.mv(uploadPath, function(err) {
-    if (err)
-      return res.status(500).send(err);
-
-    res.send({
-      result: 'File uploaded!'
-    });
-  });
+  res.send(result)
 })
 
 app.get('/', (req, res) => {
