@@ -1,0 +1,19 @@
+{
+  "name": "uploadfile",
+  "version": "1.0.0",
+  "description": "upload files",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --inspect-brk app.js"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "wanglong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1"
+  }
+}
