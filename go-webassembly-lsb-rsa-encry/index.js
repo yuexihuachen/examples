@@ -52,8 +52,9 @@ let summary = null,
     rsaOAEP = null
  document.getElementById("encrypt").onclick = () => {
   // go wasm function
-  summary = mergeData("id-assurance").summary
-  rsaOAEP = mergeData("id-assurance").rsaOAEP
+  const wasmResult = mergeData("hello-rsaOAEP")
+  summary = wasmResult.summary
+  rsaOAEP = wasmResult.rsaOAEP
 }
 document.getElementById("decrypt").onclick = () => {
   // request
