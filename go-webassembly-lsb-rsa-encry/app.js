@@ -80,7 +80,7 @@ app.post("/uploadBase64File", async (req, res) => {
     ++index
   }
 
-  const detext = crypto.privateDecrypt({
+  const rsaDecryptStr = crypto.privateDecrypt({
     key: privateKeyData,
     padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
   }, Buffer.from(req.body.rsaOAEP, 'base64'))
@@ -89,7 +89,8 @@ app.post("/uploadBase64File", async (req, res) => {
 
   res.send({
     imageDecryptStr,
-    textDecryptStr
+    textDecryptStr,
+    rsaDecryptStr: rsaDecryptStr.toString()
   })
 })
 
