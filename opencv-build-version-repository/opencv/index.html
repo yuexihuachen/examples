@@ -3,10 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>opencv - demo1</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
     <link rel="stylesheet" href="./index.css">
+    <script src="./adapter-latest.js"></script>
+    <script src="./opencv.js"></script>
   </head>
   <body>
-   
+   <div class="container">
+     <video id="video" autoplay playsinline></video>
+     <canvas id="canvasInput" width="640" height="480"></canvas>
+     <canvas id="canvasOutput"></canvas>
+     <canvas id="canvasOutput1"></canvas>
+   </div>
   </body>
-  <script src="./opencv.js"></script>
+  <script src="./index.js"></script>
 </html>

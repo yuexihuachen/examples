@@ -103,7 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
-*.png
-*.jpg
-*.jpeg
+*/files/*.png
+*/files/*.jpg
+*/files/*.jpeg
 package-lock.json
