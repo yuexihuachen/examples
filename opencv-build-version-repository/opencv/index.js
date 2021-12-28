@@ -30,23 +30,15 @@ async function initMedia() {
             video.height = height;
             window.stream = stream; 
             video.srcObject = stream;
-
-            // setTimeout(() => {
-            //     handleSuccess(video, openCV)
-            // },2000)
         })
     } catch (e) {
         logger(e)
     }
-
-
-
-
-    canvasToCv(openCV,'canvasInput')
+    canvasToBoundingRect(openCV,'canvasInput')
 }
 
 function canvasToCv(openCV, canvasId){
-    let src = openCV.imread('canvasInput');
+    let src = openCV.imread(canvasId);
     let dst = new openCV.Mat();
     let gray = new openCV.Mat();
     let opening = new openCV.Mat();
