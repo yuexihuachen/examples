@@ -176,6 +176,18 @@ Promise.all = function(promises){
   })
 }
 
+Promise.any = function(promises){
+  return new Promise(function(rs) {
+    let count = 0;
+    let len = promises.length
+    promises.forEach((p,i)=>{
+      Promise.resolve(p).then(res => {
+        rs(res)
+      })
+    })
+  })
+}
+
 let p1 = function(){
   return new Promise(function(resolve){
     setTimeout(() => {
@@ -218,3 +230,4 @@ let p6 = new Promise(function(resolve){
 .then(data => console.log(data))
 
 Promise.all([p1(),p2()]).then(data => console.log(data))
+
