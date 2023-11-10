@@ -5,6 +5,7 @@ const path = require("path")
 const util = require('util');
 const getPixels = require('get-pixels')
 const crypto = require('crypto')
+const compression = require('compression')
 
 const app = express()
 const port = 3000
@@ -52,11 +53,15 @@ I+uZciHQ8kIUHfNLYBbhETsF3iqsklKfeoIr23zYHLE5GpoC151IpKf4guoPbCHX
 a1oCDuZm//f5HMePb9juJN0WR//d5jWuizAycZf41XoEd8Bqydg=
 -----END RSA PRIVATE KEY-----
 `
-
+// 启动gzip压缩
+app.use(compression())
+// 静态资源目录
 app.use(express.static('.'))
+// json最大内容
 app.use(express.json({
   limit: 50 * 1024 * 1024
 }));
+// 上传最大内容
 app.use(fileUpload({
   limit: 50 * 1024 * 1024
 }));
