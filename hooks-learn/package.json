@@ -3,9 +3,10 @@
   "type": "module",
   "scripts": {
     "hono:dev": "bun run --hot ./index.ts",
-    "build": "rsbuild build -w",
+    "watch": "rsbuild build -w",
+    "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "dev": "concurrently \"pnpm build\" \"pnpm hono:dev\""
+    "dev": "concurrently \"pnpm watch\" \"pnpm hono:dev\""
   },
   "dependencies": {
     "concurrently": "^9.1.2",

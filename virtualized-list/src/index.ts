@@ -26,7 +26,7 @@ app.get('/', (c) => {
 
 <body>
     <div id="root">
-       
+      example
     </div>
 </body>
 <script src="./index.js"></script>
