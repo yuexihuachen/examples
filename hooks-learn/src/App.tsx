@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div className="content">
-      <h1>Rsbuild with React 111</h1>
+      <h1>Rsbuild with React 333</h1>
       <p>Start building amazing things with Rsbuild.</p>
       <p>
         <p>Count: {count}</p>
